@@ -1,0 +1,30 @@
+{% extends "base.html" %} {% block content %} {% load static %}
+    <section  id="signup">
+        <div class="wrapper">
+            <div class="box_container">
+                <div class="logo">
+                    <a href="../home.html"><img src="{% static './image/download.png' %}" alt=""></a>
+                </div>
+                <div class="register">
+                    <h4>Join with us</h4>
+                   <form action="" method="post">
+                    {% csrf_token %}
+                    {% for field in form %}
+                    <label for="{{field.id_for_label}}">{{field.label}}</label>
+                        {{field}}
+                    {% endfor %}
+                    <div class="bottom">
+                        <input type="submit" class="button_home" value="Join">
+                      </div>
+                      {% if error %}
+                        <p>{{message}}</p>
+                      {% endif %}
+                        <span>Already have an account? <a href="{% url 'users:login' %}">Login</a></span>
+                   </form>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+    {% endblock %}

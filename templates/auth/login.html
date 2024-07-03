@@ -1,0 +1,27 @@
+{% extends "base.html" %} {% block content %} {% load static %}
+<section id="login">
+  <div class="wrapper">
+    <div class="box-container">
+      <div class="logo-box">
+        <img src="{% static './image/download.png' %}" alt="Logo" />
+      </div>
+      <div class="login-container">
+        <form action="" method="post">
+            {% csrf_token %}
+          <label for="username">Username</label>
+          <input type="emai" name="username" id="id_username" />
+          <label for="password">Password</label>
+          <input type="password" name="password" id="id_password" />
+          <div class="bottom">
+            <input type="submit" value="Login" />
+          </div>
+          {% if error %}
+             <p class="error-message">{{message}}</p>
+          {% endif %}
+          <span>Don't have an account <a href="{% url 'users:register' %}">join</a></span>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
